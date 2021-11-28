@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Arkanoid logo" src="https://github.com/kkvotinova/Arkanoid/blob/main/img/icon.png" height="125"/>
+  <img alt="Arkanoid logo" src="https://github.com/kkvotinova/Arkanoid/blob/main/img/logo.png" height="190"/>
 </div>
 
 <div align="center">
