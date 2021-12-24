@@ -7,8 +7,15 @@ html {
   margin: 0;
 }
 
+body {
+  background-image: url('../img/background.jpg');
+}
+
 canvas {
-  background: #eee;
   display: block;
-  margin: 0 auto;
+  margin: 15vh auto;
+  width: 700px;
+  height: 400px;
+  background: #eee;
+  background-image: url('../img/canvas-back.jpg');
 }
