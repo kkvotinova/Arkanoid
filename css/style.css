@@ -8,14 +8,17 @@ html {
 }
 
 body {
+  height: 100vh;
   background-image: url('../img/background.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 canvas {
   display: block;
-  margin: 15vh auto;
-  width: 700px;
-  height: 400px;
   background: #eee;
   background-image: url('../img/canvas-back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
