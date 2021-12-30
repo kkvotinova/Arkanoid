@@ -21,13 +21,13 @@
     init: function() {
       const canvas = document.querySelector('#myCanvas');
       this.ctx = canvas.getContext('2d');
-      this.ctx.font = 'bold 30px Arial';
-      this.ctx.fillStyle = '#8cc63f';
+      this.ctx.font = `bold 25px 'Press Start 2P'`;
+      this.ctx.fillStyle = '#df5700';
 
       document.addEventListener('keydown', e => {
-        if (e.key == 'ArrowLeft') {
+        if (e.key == 'ArrowLeft' && game.platform.x > 0) {
           game.platform.dx = -game.platform.speed;
-        } else if (e.key == 'ArrowRight') {
+        } else if (e.key == 'ArrowRight' && game.platform.x < this.width - game.platform.width) {
           game.platform.dx = game.platform.speed;
         } else if (e.key == ' ' || e.key == 'ArrowUp') {
           game.platform.releaseBall();
@@ -81,7 +81,7 @@
           this.ctx.drawImage(this.sprites.lives, el.x, el.y);
         }
       }, this);
-      this.ctx.fillText('Score: ' + this.scored, 15, this.height - 15);
+      this.ctx.fillText('Score:' + this.scored, 15, this.height - 15);
     },
     update: function() {
       if (this.ball.collide(this.platform)) this.ball.bumpPlatform(this.platform);
@@ -105,12 +105,19 @@
         window.requestAnimationFrame(() => game.run());
     },
     over: function(flag) {
-      flag ? alert('You win') : alert('Game over');
+      document.querySelector('.modal-end').style.display = 'flex';
+      const title = document.querySelector('.modal-end-title');
+      if (flag) {
+        startAudio.play();
+        title.textContent = 'You win!';
+      } else {
+        gameOverAudio.play();
+        title.textContent = 'Game over!';
+      }
       this.running = false;
-      window.location.reload();
+      document.querySelector('.modal-end-btn').addEventListener('click', () => window.location.reload());
     }
   };
-
 
   game.ball = {
     width: 35,
@@ -135,6 +142,7 @@
           y + this.height > el.y && y < el.y + el.height) return true;
     },
     bumpBlock: function(blocks) {
+      blockAudio.play();
       this.dy *= -1;
       blocks.isAlive = false;
       ++game.scored;
@@ -144,6 +152,7 @@
       return (this.x + this.width / 2) < (platform.x + platform.width / 2);
     },
     bumpPlatform: function(platform) {
+      platformAudio.play();
       this.dy = -this.speed;
       this.dx = -this.onTheLeftSide(platform) ?  -this.speed : this.speed;
     },
@@ -185,7 +194,7 @@
       setInterval(() => {
         const i = Math.trunc(Math.random() * (4 - 1) + 1);
         game.sprites.platform.src = (i === 1) ? `img/platform.png` : `img/platform-${i}.png`;
-      }, 150);
+      }, 500);
     },
     releaseBall: function() {
       if (this.ball) {
@@ -204,7 +213,25 @@
     }
   };
 
+  const startAudio = new Audio("sound/start.mp3");
+  const gameOverAudio = new Audio("sound/gameover.mp3");
+  const blockAudio = new Audio("sound/block.mp3");
+  const platformAudio = new Audio("sound/platform.mp3");
+
   document.addEventListener('DOMContentLoaded', () => {
-    game.start();
+    document.querySelector('.modal-start-hint').addEventListener('click', () => {
+      const modal = document.querySelector('.modal-hint');
+      modal.classList.toggle('modal-show');
+      document.addEventListener('click', (e) => {
+        if (modal.classList.contains('modal-show') && e.target.nodeName != 'SPAN') {
+          modal.classList.remove('modal-show');
+        }
+      });
+    });
+    document.querySelector('.modal-start-btn').addEventListener('click', () => {
+      document.querySelector('.modal-start').style.display = 'none';
+      startAudio.play();
+      game.start();
+    });
   });
 })();

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 html {
   box-sizing: border-box;
 }
@@ -13,6 +14,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0;
 }
 
 canvas {
@@ -21,4 +24,131 @@ canvas {
   background-image: url('../img/canvas-back.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* modal start */
+.modal-start,
+.modal-end {
+  position: absolute;
+  width: 1000px;
+  height: 550px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-start-title {
+  margin: 60px 0 70px;
+  font-size: 45px;
+  color: white;
+  text-align: center;
+}
+
+.title-span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.main-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-start-btn,
+.modal-end-btn {
+  width: 160px;
+  height: 60px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  font-size: 30px;
+  background-color: #8cc63f;
+  transition: color 0.4s ease;
+}
+
+.modal-start-btn:active,
+.modal-end-btn:active {
+  background-color: #4b7520;
+}
+
+.modal-start-btn:hover,
+.modal-end-btn:hover {
+  color: white;
+}
+
+.modal-start-footer {
+  padding: 10px;
+  position: absolute;
+  width: 980px;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.modal-start-link {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.modal-start-link svg path {
+  transition: fill 0.4s ease;
+}
+
+.modal-start-link:hover svg path {
+  fill: #8ca0ba;
+}
+
+.footer-right p {
+  font-size: 10px;
+  color: white;
+}
+
+/* modal end */
+.modal-end {
+  display: none;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-end-title {
+  margin: 0;
+  font-size: 70px;
+  color: white;
+}
+
+.modal-end-btn {
+  width: 240px;
+  height: 70px;
+}
+
+.modal-start-hint {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+.modal-start-hint:hover {
+  color: #dd600b;
+}
+
+/* modal hint */
+.modal-hint {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: tomato;
+	transform: scale(0.3);
+	opacity: 0;
+	transition: all 0.6s;
+}
+
+.modal-show {
+	transform: scale(1);
+	opacity: 1;
 }
