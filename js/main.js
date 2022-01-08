@@ -218,7 +218,9 @@
   const blockAudio = new Audio("sound/block.mp3");
   const platformAudio = new Audio("sound/platform.mp3");
 
+  //* main
   document.addEventListener('DOMContentLoaded', () => {
+    //** modal hint
     document.querySelector('.modal-start-hint').addEventListener('click', () => {
       const modal = document.querySelector('.modal-hint');
       modal.classList.toggle('modal-show');
@@ -228,6 +230,7 @@
         }
       });
     });
+    //** start game
     document.querySelector('.modal-start-btn').addEventListener('click', () => {
       document.querySelector('.modal-start').style.display = 'none';
       startAudio.play();

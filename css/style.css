@@ -63,7 +63,7 @@ canvas {
   border-radius: 15px;
   font-size: 30px;
   background-color: #8cc63f;
-  transition: color 0.4s ease;
+  transition: color 0.5s ease;
 }
 
 .modal-start-btn:active,
@@ -92,11 +92,11 @@ canvas {
 }
 
 .modal-start-link svg path {
-  transition: fill 0.4s ease;
+  transition: fill 0.5s ease;
 }
 
 .modal-start-link:hover svg path {
-  fill: #8ca0ba;
+  fill: white;
 }
 
 .footer-right p {
@@ -130,7 +130,7 @@ canvas {
   font-size: 40px;
   color: white;
   cursor: pointer;
-  transition: color 0.4s ease;
+  transition: color 0.5s ease;
 }
 
 .modal-start-hint:hover {
@@ -142,13 +142,27 @@ canvas {
   position: absolute;
   width: 500px;
   height: 500px;
-  background-color: tomato;
-	transform: scale(0.3);
 	opacity: 0;
+  z-index: -1;
 	transition: all 0.6s;
+	transform: scale(0.3);
+  background-color: #8796b1;
 }
 
 .modal-show {
+  opacity: 1;
+  z-index: 1;
 	transform: scale(1);
-	opacity: 1;
+}
+
+.modal-hint-title {
+  margin: 15px 15px 10px;
+  line-height: 1.5em;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-hint-list {
+  width: 100%;
+  font-size: 20px;
 }
