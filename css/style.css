@@ -20,7 +20,6 @@ body {
 
 canvas {
   display: block;
-  background: #eee;
   background-image: url('../img/canvas-back.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -141,7 +140,8 @@ canvas {
 .modal-hint {
   position: absolute;
   width: 500px;
-  height: 500px;
+  height: 240px;
+  border-radius: 3px;
 	opacity: 0;
   z-index: -1;
 	transition: all 0.6s;
@@ -163,6 +163,24 @@ canvas {
 }
 
 .modal-hint-list {
-  width: 100%;
+  padding: 10px 20px;
   font-size: 20px;
+}
+
+.list-item > svg path {
+  transition: fill 0.3s ease;
+}
+
+.list-item > svg:hover path {
+  fill: white;
+}
+
+/* modal back */
+.modal-back {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
 }

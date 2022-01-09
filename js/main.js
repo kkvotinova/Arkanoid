@@ -224,9 +224,12 @@
     document.querySelector('.modal-start-hint').addEventListener('click', () => {
       const modal = document.querySelector('.modal-hint');
       modal.classList.toggle('modal-show');
+      const modalBack = document.querySelector('.modal-back');
+      modalBack.style.display = 'block';
       document.addEventListener('click', (e) => {
         if (modal.classList.contains('modal-show') && e.target.nodeName != 'SPAN') {
           modal.classList.remove('modal-show');
+          modalBack.style.display = 'none';
         }
       });
     });
