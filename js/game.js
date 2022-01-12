@@ -150,9 +150,9 @@ game.ball = {
   },
   whichSide: function(platform) {
     if ((this.x + this.width / 2) < (platform.x + platform.width / 2)) {
-      return (((this.x + this.width / 2) - (platform.x + platform.width / 2)) < -30) ? -this.speed/2 : -this.speed;
+      return (((this.x + this.width / 2) - (platform.x + platform.width / 2)) < -30) ? -this.speed / 2 : -this.speed;
     } else {
-      return (((this.x + this.width / 2) - (platform.x + platform.width / 2)) < 30) ? this.speed/2 : this.speed;
+      return (((this.x + this.width / 2) - (platform.x + platform.width / 2)) < 30) ? this.speed / 2 : this.speed;
     }
   },
   bumpPlatform: function(platform) {
