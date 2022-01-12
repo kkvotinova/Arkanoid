@@ -85,6 +85,9 @@ export const game = {
     if (this.platform.dx) this.platform.move();
     if (this.ball.dx || this.ball.dy) this.ball.move();
 
+    if (this.platform.x < 0) this.platform.x = 0;
+    if (this.platform.x + this.platform.width > this.width) this.platform.x = this.width - this.platform.width;
+
     this.blocks.forEach(el => {
       if (el.isAlive) {
         if (this.ball.collide(el)) {
@@ -199,16 +202,16 @@ game.platform = {
     setInterval(() => {
       const i = Math.trunc(Math.random() * (4 - 1) + 1);
       game.sprites.platform.src = (i === 1) ? `img/platform.png` : `img/platform-${i}.png`;
-    }, 500);
+    }, 40);
   },
   releaseBall: function() {
     if (this.ball) {
+      this.animate();
       this.ball.jump();
       this.ball = false;
     }
   },
   move: function() {
-    this.animate();
     this.x += this.dx;
     if (this.ball) this.ball.x += this.dx;
   },
