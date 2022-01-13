@@ -1,12 +1,9 @@
 import Platform from "./platform.js";
 import Ball from "./ball.js";
 
-export class Game {
-  ctx = undefined;
+export default class Game {
   rows = 4;
   cols = 6;
-  blocks = [];
-  lives = [];
   livesNum = 0;
   scored = 0;
   running = true;
@@ -45,6 +42,7 @@ export class Game {
   }
 
   create() {
+    this.blocks = [];
     for (let row = 0; row < this.rows; row++) {
       for (let col = 0; col < this.cols; col++) {
         this.blocks.push({
@@ -56,6 +54,8 @@ export class Game {
         });
       }
     }
+
+    this.lives = [];
     for (let i = 1; i < 4; i++) {
       this.lives.push({
         x: 45 * i + (this.width - 185),
@@ -66,6 +66,7 @@ export class Game {
   }
 
   start() {
+    startAudio.play();
     this.init();
     this.load();
     this.create();
@@ -116,7 +117,8 @@ export class Game {
   }
 
   over(flag) {
-    document.querySelector('.modal-end').style.display = 'flex';
+    const modal = document.querySelector('.modal-end');
+    modal.style.display = 'flex';
     const title = document.querySelector('.modal-end-title');
     if (flag) {
       startAudio.play();
@@ -126,9 +128,12 @@ export class Game {
       title.textContent = 'Game over!';
     }
     this.running = false;
-    document.querySelector('.modal-end-btn').addEventListener('click', () => window.location.reload());
+    document.querySelector('.modal-end-btn').addEventListener('click', () => {
+      modal.style = '';
+      new Game(1000, 550).start();
+    });
   }
 };
 
-export const startAudio = new Audio("sound/start.mp3");
+const startAudio = new Audio("sound/start.mp3");
 const gameOverAudio = new Audio("sound/gameover.mp3");

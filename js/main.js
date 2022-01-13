@@ -1,6 +1,6 @@
 'use strict';
 
-import { startAudio, Game } from "./game.js";
+import Game from "./game.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   //* modal hint
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //* start game
   document.querySelector('.modal-start-btn').addEventListener('click', () => {
     document.querySelector('.modal-start').style.display = 'none';
-    startAudio.play();
     const game = new Game(1000, 550);
     game.start();
   });
