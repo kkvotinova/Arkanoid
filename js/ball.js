@@ -21,6 +21,7 @@ export default class Ball {
   }
 
   collide(el) {
+    // checking for a collision with an element
     const x = this.x + this.dx;
     const y = this.y + this.dy;
     if (x + this.width > el.x && x < el.x + el.width &&
@@ -50,6 +51,7 @@ export default class Ball {
   }
 
   checkBounds(game) {
+    // checking for a ball collision with one of the 4 side
     const x = this.x + this.dx;
     const y = this.y + this.dy;
     if (x < 0) {

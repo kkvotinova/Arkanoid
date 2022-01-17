@@ -66,14 +66,20 @@ export default class Game {
   }
 
   start() {
+    // playing music
     startAudio.play();
+    // creating an execution context, a button handler
     this.init();
+    // uploading images
     this.load();
+    // creating an array of blocks and lives
     this.create();
+    // start main function
     this.run();
   }
 
   render() {
+    // drawing images in canvas
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
     this.ctx.drawImage(this.sprites.ball, this.ball.x, this.ball.y);
@@ -91,6 +97,10 @@ export default class Game {
   }
 
   update() {
+    /* data updates depending on conditions
+        - platform shift/ball
+        - delete block/life
+    */
     if (this.ball.collide(this.platform)) this.ball.bumpPlatform(this.platform);
     if (this.platform.dx) this.platform.move();
     if (this.ball.dx || this.ball.dy) this.ball.move();
@@ -117,6 +127,7 @@ export default class Game {
   }
 
   over(flag) {
+    // end of the game
     const modal = document.querySelector('.modal-end');
     modal.style.display = 'flex';
     const title = document.querySelector('.modal-end-title');
